@@ -60,7 +60,8 @@
 			const timeEl = document.getElementById("time");
 
 			function loop() {
-				const digits = String(Date.now()).split("");
+				const time = Math.floor(Date.now() / 1000);
+				const digits = String(time).split("");
 				timeEl.innerHTML = "";
 				for (const digit of digits) {
 					const el = document.createElement("span");
@@ -68,7 +69,9 @@
 					el.textContent = digit;
 					timeEl.append(el);
 				}
-				requestAnimationFrame(loop);
+
+				const timeUntilNext = 1000 + Math.floor(Date.now() / 1000) * 1000 - Date.now();
+				setTimeout(loop, timeUntilNext);
 			}
 			loop();
 
