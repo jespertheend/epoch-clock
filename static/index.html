@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<style>
+			html, body {
+				height: 100%;
+				margin: 0;
+				font-family: ui-sans-serif, system-ui, sans-serif;
+			}
+
+			body {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100%;
+			}
+
+			#center {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+			}
+
+			#time {
+				font-size: 40pt;
+				display: flex;
+				justify-content: space-between;
+				gap: 3px;
+			}
+
+			.digit {
+				width: 0.7em;
+				text-align: center;
+				background-color: #eeeeee;
+				border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="center">
+			<div>The current Unix epoch time is</div>
+			<div id="time">-</div>
+		</div>
+		<script type="module">
+			const timeEl = document.getElementById("time");
+
+			function loop() {
+				const digits = String(Date.now()).split("");
+				timeEl.innerHTML = "";
+				for (const digit of digits) {
+					const el = document.createElement("span");
+					el.classList.add("digit");
+					el.textContent = digit;
+					timeEl.append(el);
+				}
+				requestAnimationFrame(loop);
+			}
+			loop();
+		</script>
+	</body>
+</html>
