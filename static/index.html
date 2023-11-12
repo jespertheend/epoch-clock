@@ -24,7 +24,7 @@
 			}
 
 			#time {
-				font-size: 40pt;
+				font-size: 60pt;
 				display: flex;
 				justify-content: space-between;
 				gap: 3px;
@@ -35,6 +35,17 @@
 				text-align: center;
 				background-color: #eeeeee;
 				border-radius: 5px;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				html {
+					background-color: black;
+					color: white;
+				}
+
+				.digit {
+					background-color: #292929;
+				}
 			}
 		</style>
 	</head>
